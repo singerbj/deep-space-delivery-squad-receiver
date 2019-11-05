@@ -24,7 +24,6 @@ peer.on('open', function (id) {
     }
 
     console.log('ID: ' + peer.id);
-    cast.framework.CastReceiverContext.sendCustomMessage(, undefined, message)
 //    recvId.innerHTML = "ID: " + peer.id;
 //    status.innerHTML = "Awaiting connection...";
 });
