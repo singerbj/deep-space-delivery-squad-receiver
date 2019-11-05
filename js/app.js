@@ -10,6 +10,12 @@ var getRandHex = function(){
     return '#'+Math.floor(Math.random()*16777215).toString(16);
 };
 
+var appendToBody = function(txt){
+    var el = document.createElement("h3")
+    el.innerHTML = txt;
+    document.body.appendChild(el);
+};
+
 var serverId = getRandHex();
 
 var peer = new Peer(null, { debug: 2 });
@@ -24,6 +30,8 @@ peer.on('open', function (id) {
     }
 
     console.log('ID: ' + peer.id);
+    appendToBody('ID: ' + peer.id);
+
 //    recvId.innerHTML = "ID: " + peer.id;
 //    status.innerHTML = "Awaiting connection...";
 });
