@@ -1,0 +1,37 @@
+{
+  "name": "deep-space-delivery-squad-receiver",
+  "version": "1.0.0",
+  "description": "This sample shows how to develop a fully Cast Design Checklist compliant receiver with additional features.",
+  "main": "index.js",
+  "scripts": {
+    "dev-watch": "webpack-dev-server --mode development",
+    "dev": "webpack --mode development",
+    "prod": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/singerbj/deep-space-delivery-squad-receiver.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/singerbj/deep-space-delivery-squad-receiver/issues"
+  },
+  "homepage": "https://github.com/singerbj/deep-space-delivery-squad-receiver#readme",
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
