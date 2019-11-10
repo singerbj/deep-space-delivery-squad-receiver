@@ -77,7 +77,11 @@ class PeerJsManager {
     setInterval(() => {
       connectionsArray.forEach((conn) => {
         if(conn && conn.send){
-          conn.send(store.getState());
+          try {
+            conn.send(store.getState());
+          } catch(e) {
+            console.log("Error sending state to conn: " + conn.peer);
+          }
         }
       });
     }, Config.SEND_STATE_INTERVAL);
