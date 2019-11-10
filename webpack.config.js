@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
+  devtool: 'eval-source-map',
   entry: "./src/index.js",
   mode: "development",
   module: {
