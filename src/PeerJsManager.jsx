@@ -46,11 +46,11 @@ class PeerJsManager {
         } else {
           if(gameStarted){
             console.log("Game already started, closing connection.");
-            conn.send({ type: "GAME_STARTED"});
+            conn.send({ type: "GAME_STARTED" });
             setTimeout(() => { conn.close(); }, 1000);
           } else if(!gameStarted) {
             console.log("Too many connected players, closing connection.");
-            conn.send({ type: "TOO_MANY_PLAYERS"});
+            conn.send({ type: "TOO_MANY_PLAYERS" });
             setTimeout(() => { conn.close(); }, 1000);
           }
         }
@@ -75,13 +75,12 @@ class PeerJsManager {
     });
 
     setInterval(() => {
+      connectionsArray = connectionsArray.filter((conn) => {
+        return conn && conn.send && conn.peerConnection && conn.peerConnection.iceConnectionState !== "disconnected";
+      });
       connectionsArray.forEach((conn) => {
-        if(conn && conn.send){
-          try {
-            conn.send(store.getState());
-          } catch(e) {
-            console.log("Error sending state to conn: " + conn.peer);
-          }
+        if(conn && conn.send && conn.peerConnection && conn.peerConnection.iceConnectionState !== "disconnected"){
+          conn.send(store.getState());
         }
       });
     }, Config.SEND_STATE_INTERVAL);
