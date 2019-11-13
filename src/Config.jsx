@@ -5,11 +5,12 @@ export default {
   SEND_STATE_INTERVAL: 250,
   GAME_STATE: {
     PLAYERS_CONNECT: 0,
-    VOTE_JOURNEY: 1,
-    ON_JOURNEY: 2,
-    STATS_REVIEW: 3,
-    VOTE_SPY: 4,
-    JOURNEY_REVIEW: 5,
-    GAME_REVIEW: 6,
+    CHOOSE_ROLE: 1,
+    VOTE_JOURNEY: 2,
+    ON_JOURNEY: 3,
+    STATS_REVIEW: 4,
+    VOTE_SPY: 5,
+    JOURNEY_REVIEW: 6,
+    GAME_REVIEW: 7,
   }
 };
