@@ -15,7 +15,8 @@ class App extends Component{
     this.setupChromeCast();
     this.checkForConnections()
     this.appCss = {
-      fontFamily: "Arial, Helvetica, sans-serif",
+      fontFamily: "'Poppins', sans-serif",
+      fontSize: "24px",
       color: "#fff",
       zIndex: 500,
       position: "absolute",
