@@ -30,7 +30,7 @@ class SpaceBackground extends Component {
     var stars = {};
     var starIndex = 0;
     var numStars = 0;
-    var starsToDraw = (field.width * field.height) / 200;
+    var starsToDraw = (field.width * field.height) / 600;
 
     function Star() {
         this.X = field.width / 2;
