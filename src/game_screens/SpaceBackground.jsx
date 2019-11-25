@@ -5,7 +5,9 @@ import Config from '../Config';
 class SpaceBackground extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      acceleration: 0
+    };
     this.canvasStyles = {
       color: Config.COLORS.WHITE,
       backgroundColor: Config.COLORS.BLACK,
@@ -14,16 +16,20 @@ class SpaceBackground extends Component {
       overflow: "hidden"
     };
     this.canvasRef = React.createRef();
+
+    window.setAcceleration = (acceleration) => {
+      this.setState({ acceleration: acceleration });
+    };
   }
 
   componentDidMount() {
+    const self = this;
     const field = this.canvasRef.current;
     const f = field.getContext('2d');
 
     var stars = {};
     var starIndex = 0;
     var numStars = 0;
-    var acceleration = 0;
     var starsToDraw = (field.width * field.height) / 200;
 
     function Star() {
@@ -43,8 +49,8 @@ class SpaceBackground extends Component {
         this.X += this.SX * start / 10;
         this.Y += this.SY * start / 10;
 
-        this.W = 1;
-        this.H = 1;
+        this.W = 2;
+        this.H = 2;
 
         this.age = 0;
         this.dies = 500;
@@ -60,12 +66,14 @@ class SpaceBackground extends Component {
       this.X += this.SX;
       this.Y += this.SY
 
-      this.SX += this.SX / (50 / acceleration);
-    	this.SY += this.SY / (50 / acceleration);
+      this.SX += this.SX / (50 / self.state.acceleration);
+    	this.SY += this.SY / (50 / self.state.acceleration);
+
+      console.log
 
       this.age++;
 
-      if (this.age == Math.floor(50 / acceleration) | this.age == Math.floor(150 / acceleration) | this.age == Math.floor(300 / acceleration)) {
+      if (this.age == Math.floor(50 / self.state.acceleration) | this.age == Math.floor(150 / self.state.acceleration) | this.age == Math.floor(300 / self.state.acceleration)) {
         this.W++;
         this.H++;
       }
@@ -92,6 +100,9 @@ class SpaceBackground extends Component {
 
     	// Play with the "a" value to create streams
       f.fillStyle = "rgba(0, 0, 0, 0.8)";
+      if(self.state.acceleration > 0){
+        f.fillStyle = "rgba(0, 0, 0, 0.4)";
+      }
       f.fillRect(0, 0, field.width, field.height);
 
       for (var i = numStars; i < starsToDraw; i++) {
@@ -110,7 +121,6 @@ class SpaceBackground extends Component {
   }
 
   render(){
-    console.log("render background");
     return (
       <canvas
         ref={this.canvasRef}
