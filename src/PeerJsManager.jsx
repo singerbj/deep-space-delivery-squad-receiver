@@ -35,7 +35,7 @@ class PeerJsManager {
 
           conn.on('data', function(data) {
             console.log('data recieved from ' + conn.peer + ':', data);
-            store.actions.messageReceived(data);
+            store.actions.messageReceived(JSON.parse(data));
           });
           conn.on('close', function(data) {
             console.log('close (conn) ' + conn.peer + ':', data);

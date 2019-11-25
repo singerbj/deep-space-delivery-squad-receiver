@@ -4,8 +4,8 @@ import PeerJsManager from "./PeerJsManager";
 import store from "./CreateStore";
 import CreateActions from "./CreateActions";
 import GameContainer from "./game_screens/GameContainer";
+import SpaceBackground from "./game_screens/SpaceBackground";
 import Config from './Config';
-import "./App.css";
 store.actions = CreateActions(store);
 
 class App extends Component{
@@ -14,6 +14,17 @@ class App extends Component{
     this.peerJsManager = new PeerJsManager(store);
     this.setupChromeCast();
     this.checkForConnections()
+    this.appCss = {
+      fontFamily: "Arial, Helvetica, sans-serif",
+      color: "#fff",
+      zIndex: 500,
+      position: "absolute",
+      top: "0px",
+      left: "0px",
+      width: "calc(100% - 40px)",
+      height:  "calc(100% - 40px)",
+      padding: "20px"
+    }
   }
 
   setupChromeCast () {
@@ -35,7 +46,8 @@ class App extends Component{
   render(){
     return(
       <Provider store={store}>
-        <div className="App">
+        <SpaceBackground />
+        <div className="App" style={this.appCss}>
           <GameContainer />
         </div>
       </Provider>

@@ -12,5 +12,9 @@ export default {
     VOTE_SPY: 5,
     JOURNEY_REVIEW: 6,
     GAME_REVIEW: 7,
+  },
+  COLORS: {
+    BLACK: "#333",
+    WHITE: "#DDD"
   }
 };
