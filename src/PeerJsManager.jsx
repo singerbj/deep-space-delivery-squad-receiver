@@ -1,13 +1,19 @@
 import { connect } from 'react-redux';
 import Config from './Config';
 
-var getRandHex = function(){
-    return Math.floor(Math.random()*16777215).toString(16).toUpperCase();
+const makeid = (length) => {
+   var result           = '';
+   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
 };
 
 class PeerJsManager {
   constructor(store) {
-    var serverId = getRandHex();
+    var serverId = makeid(6);
     var peer = new Peer(serverId, { debug: 3 });
     var connectionsArray = [];
 

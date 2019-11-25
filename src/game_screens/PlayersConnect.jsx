@@ -30,7 +30,7 @@ class GameContainer extends Component{
 
 	return(
 		<div>
-			<h3>Host Id: {this.props.hostId || "Loading..."}</h3>
+			<h3>Spaceship Identifier: {this.props.hostId ? this.props.hostId.split('').join(' ') : "Loading..."}</h3>
 			<div>
 				<div>Number of Players Connected: {numberOfPlayers} out of {Config.MAX_PLAYERS}</div>
 				{ playerJsx }
