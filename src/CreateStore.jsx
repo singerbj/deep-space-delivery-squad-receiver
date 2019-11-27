@@ -1,5 +1,7 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
 import Config from './Config';
+import Sagas from './Sagas'
 
 const INITIAL_STATE = {
   gameState: 0,
@@ -86,9 +88,47 @@ const storeHandler = (state = INITIAL_STATE, action) => {
           ...state
         };
       }
+    case 'ROLE_SELECT':
+      var players = { ...state.players };
+      var player = players[action.deviceId];
+      var roleSelected = action.roleSelected;
+
+      var roleAlreadySelected = players.filter((player) => {
+        return player.role === roleSelected;
+      }).length > 0;
+
+      if(!roleAlreadySelected){
+        player.role = roleSelected;
+        return {
+          ...state,
+          players: {
+            ...players
+          }
+        }
+      } else {
+        return {
+          ...state
+        };
+      }
+    case 'ROLE_SELECT_TIME_EXPIRE':
+        var players = { ...state.players };
+
+        //assign roles to remaining players who did not select one
+
     default:
       return state
   }
 };
 
-export default createStore(storeHandler);
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware()
+// mount it on the Store
+const store = createStore(
+  storeHandler,
+  applyMiddleware(sagaMiddleware)
+)
+
+// then run the saga
+sagaMiddleware.run(Sagas)
+
+export default store;

@@ -13,7 +13,7 @@ const makeid = (length) => {
 
 class PeerJsManager {
   constructor(store) {
-    var serverId = makeid(6);
+    var serverId = makeid(Config.HOST_ID_LENGTH);
     var peer = new Peer(serverId, { debug: 3 });
     var connectionsArray = [];
 
