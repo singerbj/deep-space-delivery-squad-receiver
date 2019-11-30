@@ -11,23 +11,23 @@ class GameContainer extends Component{
   }
 
   render(){
-    // if(this.props.gameState === Config.GAME_STATE.PLAYERS_CONNECT){
-    //   return <PlayersConnect />;
-    // } else if(this.props.gameState === Config.GAME_STATE.CHOOSE_ROLE){
+    if(this.props.gameState === Config.GAME_STATE.PLAYERS_CONNECT){
+      return <PlayersConnect />;
+    } else if(this.props.gameState === Config.GAME_STATE.CHOOSE_ROLE){
       return <ChooseRole />;
-    // } else if(this.props.gameState === Config.GAME_STATE.VOTE_JOURNEY){
-    //
-    // } else if(this.props.gameState === Config.GAME_STATE.ON_JOURNEY){
-    //
-    // } else if(this.props.gameState === Config.GAME_STATE.STATS_REVIEW){
-    //
-    // } else if(this.props.gameState === Config.GAME_STATE.VOTE_SPY){
-    //
-    // } else if(this.props.gameState === Config.GAME_STATE.JOURNEY_REVIEW){
-    //
-    // } else if(this.props.gameState === Config.GAME_STATE.GAME_REVIEW){
-    //
-    // }
+    } else if(this.props.gameState === Config.GAME_STATE.VOTE_JOURNEY){
+
+    } else if(this.props.gameState === Config.GAME_STATE.ON_JOURNEY){
+
+    } else if(this.props.gameState === Config.GAME_STATE.STATS_REVIEW){
+
+    } else if(this.props.gameState === Config.GAME_STATE.VOTE_SPY){
+
+    } else if(this.props.gameState === Config.GAME_STATE.JOURNEY_REVIEW){
+
+    } else if(this.props.gameState === Config.GAME_STATE.GAME_REVIEW){
+
+    }
   }
 }
 

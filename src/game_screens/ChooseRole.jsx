@@ -35,9 +35,7 @@ class GameContainer extends Component{
         <div>
           { playerJsx }
         </div>
-        { hostPlayer &&
-          <h3>Start your engines when ready, {hostPlayer.playerName}!</h3>
-        }
+        <h3>30 seconds to enlist!</h3>
       </div>
     );
   }

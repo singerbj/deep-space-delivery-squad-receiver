@@ -88,13 +88,26 @@ const storeHandler = (state = INITIAL_STATE, action) => {
           ...state
         };
       }
+    case 'START_GAME':
+      var players = { ...state.players };
+      var player = players[action.deviceId];
+      if(player.isHost){
+        return {
+          ...state,
+          gameState: Config.GAME_STATE.CHOOSE_ROLE
+        };
+      } else {
+        return {
+          ...state
+        };
+      }
     case 'ROLE_SELECT':
       var players = { ...state.players };
       var player = players[action.deviceId];
-      var roleSelected = action.roleSelected;
+      var roleSelected = action.data.roleSelected;
 
-      var roleAlreadySelected = players.filter((player) => {
-        return player.role === roleSelected;
+      var roleAlreadySelected = Object.keys(players).filter((deviceId) => {
+        return players[deviceId].role === roleSelected;
       }).length > 0;
 
       if(!roleAlreadySelected){
