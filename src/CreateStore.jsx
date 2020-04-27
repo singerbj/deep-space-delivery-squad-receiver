@@ -6,7 +6,9 @@ import Sagas from './Sagas'
 const INITIAL_STATE = {
   gameState: 0,
   hostId: undefined,
-  players: {}
+  players: {},
+  timeRemaining: undefined,
+  journey: 0
 };
 
 
@@ -88,6 +90,11 @@ const storeHandler = (state = INITIAL_STATE, action) => {
           ...state
         };
       }
+    case 'SET_TIME_REMAINING':
+      return {
+        ...state,
+        timeRemaining: action.timeRemaining
+      };
     case 'START_GAME':
       var players = { ...state.players };
       var player = players[action.deviceId];
@@ -136,12 +143,8 @@ const storeHandler = (state = INITIAL_STATE, action) => {
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
 // mount it on the Store
-const store = createStore(
-  storeHandler,
-  applyMiddleware(sagaMiddleware)
-)
-
+const store = createStore(storeHandler, applyMiddleware(sagaMiddleware));
 // then run the saga
-sagaMiddleware.run(Sagas)
+sagaMiddleware.run(Sagas);
 
 export default store;

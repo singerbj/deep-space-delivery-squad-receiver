@@ -21,7 +21,7 @@ class PeerJsManager {
         if (peer.id === null) {
             console.log('Received null id from peer open');
         } else {
-            store.actions.setHostId(peer.id);
+            store.dispatch(store.actions.setHostId(peer.id));
         }
     });
 
@@ -37,11 +37,11 @@ class PeerJsManager {
         if((!gameStarted && morePlayersCanJoin) || (gameStarted && playerHasConnectedBefore)){
           console.log("Connected to: " + conn.peer + " with playerName: " + playerName);
           connectionsArray.push(conn);
-          store.actions.playerConnected(deviceId, conn.peer, playerName);
+          store.dispatch(store.actions.playerConnected(deviceId, conn.peer, playerName));
 
           conn.on('data', function(data) {
             console.log('data recieved from ' + conn.peer + ':', data);
-            store.actions.messageReceived(JSON.parse(data));
+            store.dispatch(JSON.parse(data));
           });
           conn.on('close', function(data) {
             console.log('close (conn) ' + conn.peer + ':', data);

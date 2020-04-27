@@ -40,7 +40,7 @@ class App extends Component{
 
   checkForConnections () {
     setInterval(() => {
-      store.actions.checkForConnections();
+      store.dispatch(store.actions.checkForConnections());
     }, Config.CHECK_CONNECTION_INTERVAL);
   }
 

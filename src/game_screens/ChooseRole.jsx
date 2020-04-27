@@ -35,7 +35,7 @@ class GameContainer extends Component{
         <div>
           { playerJsx }
         </div>
-        <h3>30 seconds to enlist!</h3>
+        <h3>{this.props.timeRemaining} seconds to enlist!</h3>
       </div>
     );
   }
